@@ -17,7 +17,7 @@ defmodule ErrorThrowerWeb.Router do
   scope "/", ErrorThrowerWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", ErrorLive
   end
 
   # Other scopes may use custom stacks.

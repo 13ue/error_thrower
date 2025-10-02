@@ -1,0 +1,84 @@
+<Layouts.app flash={@flash}>
+  <div class="space-y-8">
+    <div class="text-left">
+      <h1 class="text-4xl font-bold text-base-content mb-4">
+        Error Thrower
+      </h1>
+      <p class="text-lg text-base-content/70">
+        Click the buttons below to trigger different runtime errors
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body text-center">
+          <h2 class="card-title justify-center text-error">
+            <.icon name="hero-exclamation-triangle" class="w-6 h-6" /> MatchError
+          </h2>
+          <p class="text-sm text-base-content/70 mb-4">
+            Pattern matching failure when trying to match
+            <code phx-no-curly-interpolation>{:ok, _}</code>
+            with :atom
+          </p>
+          <div class="card-actions justify-center">
+            <button
+              phx-click="trigger_match_error"
+              class="btn btn-error btn-outline"
+            >
+              Trigger MatchError
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body text-center">
+          <h2 class="card-title justify-center text-warning">
+            <.icon name="hero-exclamation-triangle" class="w-6 h-6" /> FunctionClauseError
+          </h2>
+          <p class="text-sm text-base-content/70 mb-4">
+            Function clause mismatch when pattern matching fails in a case statement
+          </p>
+          <div class="card-actions justify-center">
+            <button
+              phx-click="trigger_function_clause_error"
+              class="btn btn-warning btn-outline"
+            >
+              Trigger FunctionClauseError
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body text-center">
+          <h2 class="card-title justify-center text-info">
+            <.icon name="hero-exclamation-triangle" class="w-6 h-6" /> ArgumentError
+          </h2>
+          <p class="text-sm text-base-content/70 mb-4">
+            Invalid argument passed to String.to_atom/1 with spaces
+          </p>
+          <div class="card-actions justify-center">
+            <button
+              phx-click="trigger_argument_error"
+              class="btn btn-info btn-outline"
+            >
+              Trigger ArgumentError
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info max-w-2xl mx-auto">
+      <.icon name="hero-information-circle" class="w-6 h-6" />
+      <div>
+        <h3 class="font-bold">Warning</h3>
+        <div class="text-sm">
+          These buttons will cause the LiveView process to crash and restart.
+          This is expected behavior for testing error handling.
+        </div>
+      </div>
+    </div>
+  </div>
+</Layouts.app>
